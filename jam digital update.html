@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jam Digital Keren</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            /* Mengatur gambar latar belakang */
+            background-image: url('https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden; /* Mencegah scroll bar yang tidak perlu */
+        }
+
+        /* Penampung untuk semua elemen agar mudah diatur */
+        .container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            /* Lapisan gelap agar teks lebih mudah dibaca */
+            background-color: rgba(0, 0, 0, 0.3); 
+        }
+
+        /* Gaya untuk tulisan di kiri atas */
+        .header-left {
+            position: absolute;
+            top: 25px;
+            left: 30px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Gaya untuk tulisan di kanan atas */
+        .header-right {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Gaya baru untuk jam di tengah */
+        #clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 12rem; /* <<< UKURAN DIUBAH DI SINI */
+            font-weight: bold;
+            /* Efek bayangan agar teks 'timbul' dan keren */
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Penyesuaian untuk layar kecil (HP) */
+        @media (max-width: 768px) {
+            #clock {
+                font-size: 6rem; /* Ukuran di HP juga disesuaikan */
+            }
+            .header-left, .header-right {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-left">Sinar Mutiara</div>
+        <div class="header-right">Muamar</div>
+
+        <div id="clock"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, "0");
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            const seconds = now.getSeconds().toString().padStart(2, "0");
+            document.getElementById(
+                "clock"
+            ).textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
